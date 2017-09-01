@@ -6,6 +6,9 @@ echo Configure TLS
 postconf -e smtpd_tls_cert_file=$(find /etc/postfix/certs -iname *.crt)
 postconf -e smtpd_tls_key_file=$(find /etc/postfix/certs -iname *.key)
 postconf -e smtpd_tls_security_level=may
+postconf -e smtp_tls_cert_file=$(find /etc/postfix/certs -iname *.crt)
+postconf -e smtp_tls_key_file=$(find /etc/postfix/certs -iname *.key)
+postconf -e smtp_tls_security_level=may
 chmod 400 /etc/postfix/certs/*.*
 # /etc/postfix/master.cf
 postconf -M submission/inet="submission   inet   n   -   n   -   -   smtpd"
