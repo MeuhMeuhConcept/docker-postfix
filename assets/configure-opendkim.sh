@@ -51,7 +51,7 @@ chmod 500 /etc/opendkim/_domainkeys
 
 cp /etc/opendkim/domainkeys/* /etc/opendkim/_domainkeys/
 
-regex="\/([^.]+)\.(.+)\.private$"
+regex="\/([^.\/]+)\.(.+)\.private$"
 for f in $(find /etc/opendkim/_domainkeys -iname "*.private")
     do
         if [[ $f =~ $regex ]];then
