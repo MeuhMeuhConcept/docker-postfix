@@ -1,3 +1,8 @@
-debug.sh
-sftp-config.json
-assets/domainkeys/mail.*
+smtp.env
+docker-compose.yml
+
+assets/domainkeys/*
+!assets/domainkeys/readme
+
+assets/certs/*
+!assets/certs/readme

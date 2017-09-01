@@ -1,0 +1,18 @@
+version: '3.2'
+
+services:
+  mailer:
+    image: meuhmeuhconcept/postfix
+    ports:
+      - "25:25"
+      #- "587:587"
+    env_file:
+      - smtp.env
+    #volumes:
+      #- $PWD/assets/certs:/etc/postfix/certs
+      #- $PWD/assets/domainkeys:/etc/opendkim/domainkeys
+    #environments:
+      #- smtp_user=user@dmain:pwd #split with ,
+    deploy:
+      restart_policy:
+        condition: on-failure

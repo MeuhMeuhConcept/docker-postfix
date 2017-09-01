@@ -1,18 +1,21 @@
-From ubuntu:trusty
-MAINTAINER Elliott Ye
+FROM alpine:3.5
 
-# Set noninteractive mode for apt-get
-ENV DEBIAN_FRONTEND noninteractive
+MAINTAINER jn.germon@meuhmeuhconcept.com
 
-# Update
-RUN apt-get update
+# Install packages
+RUN apk update && \
+    apk add \
+    bash \
+    supervisor \
+    postfix \
+    opendkim \
+    rsyslog \
+    cyrus-sasl && \
+    apk del --no-cache && \
+    rm -rf /var/cache/apk/*
 
-# Start editing
-# Install package here for cache
-RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools
-
-# Add files
-ADD assets/install.sh /opt/install.sh
+# Add installation file
+ADD assets/* /opt/
 
 # Run
-CMD /opt/install.sh;/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+CMD ["/opt/install.sh"]

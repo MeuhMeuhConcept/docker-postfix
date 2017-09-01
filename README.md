@@ -1,8 +1,10 @@
 docker-postfix
 ==============
 
-run postfix with smtp authentication (sasldb) in a docker container.
+Run postfix with smtp authentication (sasldb) in a docker container.
 TLS and OpenDKIM support are optional.
+
+Based on Alpine
 
 ## Requirement
 + Docker 1.0
@@ -39,6 +41,15 @@ TLS and OpenDKIM support are optional.
 			-v /path/to/certs:/etc/postfix/certs \
 			--name postfix -d catatnight/postfix
 	```
+
+### Docker compose of stack usage
+Copy/paste and adapt this file for your configuration :
+* `docker-compose.yml.dist` => `docker-compose.yml`
+
+You can launch these command to do this :
+```
+make install
+```
 
 ## Note
 + Login credential should be set to (`username@mail.example.com`, `password`) in Smtp Client
