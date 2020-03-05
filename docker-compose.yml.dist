@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   mailer:
-    image: meuhmeuhconcept/postfix
+    image: meuhmeuhconcept/postfix:1.2
     ports:
       - "25:25"
       #- "587:587"
@@ -10,6 +10,7 @@ services:
       #- $PWD/assets/certs:/etc/postfix/certs
       #- $PWD/assets/domainkeys:/etc/opendkim/domainkeys
     #environment:
+      - maildomain=mail.example.com
       #- smtp_user=user@domain:pwd #split with ,
     deploy:
       restart_policy:

@@ -15,7 +15,7 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 
 # Add installation file
-ADD assets/* /opt/
+ADD assets/install.sh /opt/install.sh
 
 # Run
-CMD ["/opt/install.sh"]
+CMD /opt/install.sh;/usr/bin/supervisord -c /etc/supervisord.conf

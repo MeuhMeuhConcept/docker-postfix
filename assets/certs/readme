@@ -1,1 +1,11 @@
 put your SSL certificates key(.key) and cert(.crt) here
+
+
+1. Arrêter traefik
+2. lancer la commande letsencrypt (en root)
+    letsencrypt certonly -d smtp.meuhmeuhconcept.fr --rsa-key-size 4096
+3. remettre traefik en route
+4. mettre a jour les fichiers assets/certs/domain.crt et domain.key avec fullchain.pem et priv.pem
+5. relancer postfix
+
+Important : ne pas garder les anciens fichiers dans le même dossier
